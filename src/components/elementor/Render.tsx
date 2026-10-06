@@ -383,18 +383,18 @@ function withSubmenu(item: { text: string; href: string }) {
   };
 }
 
-/** Replaces the WooCommerce mini-cart ("Varukorg"); there is no cart, so it links to the plans. */
+/** Replaces the WooCommerce mini-cart ("Varukorg"); a placeholder link until a cart exists. */
 function CartButton() {
   return (
     <div className="elementor-menu-cart__wrapper">
       <div className="elementor-menu-cart__toggle_wrapper">
         <div className="elementor-menu-cart__toggle elementor-button-wrapper">
-          <Link className="elementor-menu-cart__toggle_button elementor-button elementor-size-sm" href="/streaming-plans/">
+          <a className="elementor-menu-cart__toggle_button elementor-button elementor-size-sm" href="#">
             <span className="elementor-button-text">Varukorg</span>
             <span className="elementor-button-icon">
               <Icon icon="eicon-cart-medium" />
             </span>
-          </Link>
+          </a>
         </div>
       </div>
     </div>
