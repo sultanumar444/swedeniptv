@@ -1,0 +1,192 @@
+/*
+ * Home page refresh: gives the migrated Elementor layout its own look
+ * (depth, gradients, hover states) without changing content or colours.
+ * `body` prefix = one step more specific than the generated post-8.css rules.
+ */
+
+/* ---------- Hero ---------- */
+body .elementor-8 .elementor-element.elementor-element-5511af63 {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 110px;
+}
+body .elementor-8 .elementor-element.elementor-element-5511af63 > .elementor-background-overlay {
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 45%, rgba(47, 219, 127, 0.16), transparent 70%),
+    linear-gradient(180deg, rgba(0, 33, 29, 0.55) 0%, rgba(0, 33, 29, 0.78) 65%, #00211d 100%);
+  opacity: 1;
+}
+body .elementor-8 .elementor-element.elementor-element-5511af63 > .elementor-container {
+  position: relative;
+  z-index: 2;
+}
+/* Soft curved bottom edge into the next section. */
+body .elementor-8 .elementor-element.elementor-element-5511af63::after {
+  content: "";
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  bottom: -60px;
+  height: 120px;
+  background: #fff;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  z-index: 1;
+}
+body .elementor-8 .elementor-element.elementor-element-faaa594 > .elementor-widget-container::before {
+  content: "45 000+ kanaler · HD & 4K · Support 24/7";
+  display: inline-block;
+  margin-bottom: 22px;
+  padding: 7px 18px;
+  border: 1px solid rgba(47, 219, 127, 0.45);
+  border-radius: 999px;
+  background: rgba(47, 219, 127, 0.1);
+  backdrop-filter: blur(6px);
+  color: #b9f5d4;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  line-height: 1.4;
+}
+body .elementor-8 .elementor-element.elementor-element-faaa594 .elementor-heading-title {
+  background: linear-gradient(100deg, #ffffff 0%, #c9f9de 35%, #2fdb7f 70%, #16a38a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 6px 30px rgba(47, 219, 127, 0.25));
+}
+body .elementor-8 .elementor-element.elementor-element-1d1d2a10 .elementor-button {
+  border-radius: 999px;
+  padding: 16px 34px;
+}
+
+/* ---------- Intro card overlaps the hero curve ---------- */
+body .elementor-8 .elementor-element.elementor-element-8c6c9d0 {
+  position: relative;
+  z-index: 2;
+  margin-top: -70px;
+}
+body .elementor-8 .elementor-element.elementor-element-88cc9a5 > .elementor-element-populated {
+  border-radius: 24px;
+  border-top: 4px solid #2fdb7f;
+  background: #fff;
+  box-shadow: 0 30px 60px -25px rgba(0, 33, 29, 0.35), 0 0 0 1px rgba(3, 68, 49, 0.06);
+}
+body .elementor-8 .elementor-element.elementor-element-85804c4 .elementor-button {
+  border-radius: 999px;
+}
+
+/* ---------- Icon boxes become lifted cards ---------- */
+body .elementor-8 :is(.elementor-element-90c4c13, .elementor-element-77f34ac, .elementor-element-183863e) > .elementor-element-populated {
+  margin: 8px;
+  padding: 30px 22px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #f3fdf8 0%, #ffffff 100%);
+  box-shadow: 0 0 0 1px rgba(3, 68, 49, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+body .elementor-8 :is(.elementor-element-90c4c13, .elementor-element-77f34ac, .elementor-element-183863e) > .elementor-element-populated:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 40px -20px rgba(0, 33, 29, 0.35), 0 0 0 1px rgba(47, 219, 127, 0.4);
+}
+
+/* ---------- Dark media section ---------- */
+body .elementor-8 :is(.elementor-element-1b1e2ce, .elementor-element-53497b7, .elementor-element-7908f4d, .elementor-element-ec6589a, .elementor-element-f7c16c0) .elementor-button {
+  border-radius: 999px;
+  border: 1px solid rgba(47, 219, 127, 0.45);
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  font-size: 12px;
+}
+/* Fade the carousel edges into the background. */
+body .elementor-8 :is(.elementor-element-91b2d33, .elementor-element-bb0cbc6, .elementor-element-cbd3cca, .elementor-element-e58b46f) .elementor-image-carousel-wrapper {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+  padding: 18px 0;
+}
+body .elementor-8 :is(.elementor-element-91b2d33, .elementor-element-bb0cbc6, .elementor-element-cbd3cca, .elementor-element-e58b46f) .swiper-slide-image {
+  box-shadow: 0 18px 30px -18px rgba(0, 0, 0, 0.9);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+body .elementor-8 :is(.elementor-element-91b2d33, .elementor-element-bb0cbc6, .elementor-element-cbd3cca, .elementor-element-e58b46f) .swiper-slide:hover .swiper-slide-image {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 24px 40px -16px rgba(47, 219, 127, 0.45);
+}
+
+/* ---------- Steps: numbered timeline in a 2 × 2 grid ---------- */
+body .elementor-8 .elementor-element.elementor-element-9efe0c7 > .elementor-widget-wrap {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  max-width: 960px;
+  margin-inline: auto;
+}
+body .elementor-8 .elementor-element.elementor-element-9efe0c7 > .elementor-widget-wrap > .elementor-element-8809c71 {
+  grid-column: 1 / -1;
+}
+body .elementor-8 :is(.elementor-element-feeff3d, .elementor-element-e6b9a0a, .elementor-element-f1a526e, .elementor-element-dda3d4c) {
+  margin: 0 !important;
+  height: 100%;
+}
+/* Equal-height cards per row. */
+body .elementor-8 :is(.elementor-element-feeff3d, .elementor-element-e6b9a0a, .elementor-element-f1a526e, .elementor-element-dda3d4c) > .elementor-container,
+body .elementor-8 :is(.elementor-element-f1734f0, .elementor-element-110ce41, .elementor-element-13df76e, .elementor-element-6aefefa) {
+  height: 100%;
+}
+body .elementor-8 :is(.elementor-element-f1734f0, .elementor-element-110ce41, .elementor-element-13df76e, .elementor-element-6aefefa) > .elementor-element-populated {
+  height: 100%;
+  padding: 26px 24px 18px !important;
+  border: 0 !important;
+  border-left: 4px solid #2fdb7f !important;
+  border-radius: 18px !important;
+  background: #fff;
+  box-shadow: 0 18px 40px -26px rgba(0, 33, 29, 0.45), 0 0 0 1px rgba(3, 68, 49, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+body .elementor-8 :is(.elementor-element-f1734f0, .elementor-element-110ce41, .elementor-element-13df76e, .elementor-element-6aefefa) > .elementor-element-populated:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 44px -24px rgba(0, 33, 29, 0.5), 0 0 0 1px rgba(47, 219, 127, 0.45);
+}
+@media (max-width: 767px) {
+  body .elementor-8 .elementor-element.elementor-element-9efe0c7 > .elementor-widget-wrap {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Devices ---------- */
+body .elementor-8 :is(.elementor-element-a2af393, .elementor-element-9abd0f3, .elementor-element-282b950) > .elementor-element-populated {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+body .elementor-8 :is(.elementor-element-a2af393, .elementor-element-9abd0f3, .elementor-element-282b950) > .elementor-element-populated:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 40px -22px rgba(0, 33, 29, 0.4);
+}
+body .elementor-8 .elementor-element.elementor-element-45fa096 img {
+  filter: drop-shadow(0 30px 40px rgba(0, 33, 29, 0.25));
+}
+
+/* ---------- Pricing (3-month highlight lives in theme.css) ---------- */
+body .elementor-8 :is(.elementor-element-fcb01a1, .elementor-element-a132c34, .elementor-element-a413076, .elementor-element-0a43ae8) > .elementor-element-populated {
+  position: relative;
+  border-radius: 20px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+body .elementor-8 :is(.elementor-element-fcb01a1, .elementor-element-a132c34, .elementor-element-a413076, .elementor-element-0a43ae8) > .elementor-element-populated:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 50px -25px rgba(47, 219, 127, 0.45);
+}
+body .elementor-8 :is(.elementor-element-149f7bd, .elementor-element-14ec2ae, .elementor-element-cfb518f, .elementor-element-29bf1b4) img {
+  transition: transform 0.35s ease;
+}
+body .elementor-8 :is(.elementor-element-fcb01a1, .elementor-element-a132c34, .elementor-element-a413076, .elementor-element-0a43ae8):hover :is(.elementor-element-149f7bd, .elementor-element-14ec2ae, .elementor-element-cfb518f, .elementor-element-29bf1b4) img {
+  transform: translateY(-6px) rotate(-2deg);
+}
+/* ---------- FAQ ---------- */
+body .elementor-8 .elementor-element.elementor-element-8fa7bb3 img {
+  filter: drop-shadow(0 30px 40px rgba(0, 33, 29, 0.25));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body .elementor-8 * {
+    transition: none !important;
+  }
+}

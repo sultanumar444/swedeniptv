@@ -1,0 +1,494 @@
+/*
+ * Site-wide design layer (same language as the home page refresh):
+ * glowing banners, pill buttons, lifting cards, gradient icon tiles.
+ * Works on the generic Elementor markup, so every migrated page gets it.
+ * `body` prefix = one step more specific than the generated Elementor rules.
+ */
+
+:root {
+  --brand: #2fdb7f;
+  --brand-dark: #16a38a;
+  --ink: #00211d;
+  --ink-light: #034431;
+  --brand-gradient: linear-gradient(135deg, #2fdb7f, #16a38a);
+  --card-shadow-hover: 0 24px 44px -24px rgba(0, 33, 29, 0.45), 0 0 0 1px rgba(47, 219, 127, 0.45);
+}
+
+/* Default link colour: brand green instead of the WordPress theme's pink.
+   In the base layer so Elementor's per-element colours still win. */
+@layer base {
+  a {
+    color: #16a38a;
+  }
+  a:hover,
+  a:focus {
+    color: #2fdb7f;
+  }
+}
+
+/* ---------- Header ---------- */
+.site-header-sticky {
+  box-shadow: 0 1px 0 rgba(47, 219, 127, 0.18), 0 12px 30px -18px rgba(0, 0, 0, 0.6);
+}
+body .elementor-location-header .elementor-menu-cart__toggle_button {
+  border-radius: 999px;
+  border: 1px solid rgba(47, 219, 127, 0.4);
+}
+
+/* ---------- Main menu: "Instruktioner" dropdown ---------- */
+body .elementor-nav-menu--main .menu-item-has-children {
+  position: relative;
+}
+body .elementor-nav-menu--main .menu-item-has-children > .elementor-item .sub-arrow {
+  display: inline-flex;
+  margin: 0 0 0 6px;
+  padding: 0;
+  font-size: 11px;
+  transition: transform 0.2s ease;
+}
+body .elementor-nav-menu--main .menu-item-has-children:is(:hover, :focus-within) > .elementor-item .sub-arrow {
+  transform: rotate(180deg);
+}
+body .elementor-nav-menu--main .elementor-nav-menu .sub-menu {
+  display: block;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  z-index: 100;
+  width: 230px;
+  padding: 8px;
+  border: 1px solid rgba(47, 219, 127, 0.25);
+  border-radius: 14px;
+  background: #00211d;
+  box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+/* Invisible bridge so the menu stays open while the pointer moves down. */
+body .elementor-nav-menu--main .elementor-nav-menu .sub-menu::before {
+  content: "";
+  position: absolute;
+  inset: -12px 0 auto;
+  height: 12px;
+}
+body .elementor-nav-menu--main .menu-item-has-children:is(:hover, :focus-within) > .sub-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+body .elementor-nav-menu--main .sub-menu .elementor-sub-item {
+  padding: 9px 14px !important;
+}
+body .elementor-nav-menu .sub-menu .elementor-sub-item {
+  display: block;
+  border: 0 !important;
+  border-radius: 8px;
+  background: transparent;
+  color: #fff !important;
+  font-size: 14px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+body .elementor-nav-menu .sub-menu .elementor-sub-item:is(:hover, :focus, .elementor-item-active) {
+  background: rgba(47, 219, 127, 0.12);
+  color: #2fdb7f !important;
+}
+/* Mobile dropdown: expandable list. */
+body .elementor-nav-menu--dropdown .menu-item-has-children {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+body .elementor-nav-menu--dropdown .menu-item-has-children > .elementor-item {
+  flex: 1;
+}
+body .elementor-nav-menu--dropdown .submenu-toggle {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  padding: 0 22px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+body .elementor-nav-menu--dropdown .submenu-toggle .sub-arrow {
+  margin: 0;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+body .elementor-nav-menu--dropdown .is-expanded > .submenu-toggle .sub-arrow {
+  transform: rotate(180deg);
+}
+body .elementor-nav-menu__container.elementor-nav-menu--dropdown .elementor-nav-menu .sub-menu {
+  display: none;
+  position: static;
+  width: 100%;
+  padding: 0 0 8px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+body .elementor-nav-menu__container.elementor-nav-menu--dropdown .is-expanded > .sub-menu {
+  display: block;
+}
+body .elementor-nav-menu__container.elementor-nav-menu--dropdown .sub-menu .elementor-sub-item {
+  padding: 12px 20px 12px 36px !important;
+  color: #16163f !important;
+}
+
+/* ---------- Page title banner (all inner pages and guides) ---------- */
+body .elementor-656 .elementor-element.elementor-element-fdc5e4f {
+  position: relative;
+  overflow: hidden;
+}
+body .elementor-656 .elementor-element.elementor-element-fdc5e4f > .elementor-background-overlay {
+  background:
+    radial-gradient(ellipse 55% 70% at 50% 55%, rgba(47, 219, 127, 0.18), transparent 70%),
+    linear-gradient(180deg, rgba(0, 33, 29, 0.6) 0%, rgba(0, 33, 29, 0.85) 100%);
+  opacity: 1;
+}
+body .elementor-656 .elementor-element.elementor-element-fdc5e4f::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #2fdb7f 30%, #16a38a 70%, transparent);
+  box-shadow: 0 0 24px 2px rgba(47, 219, 127, 0.55);
+}
+body .elementor-656 .elementor-element.elementor-element-5e121f7 .elementor-heading-title {
+  background: linear-gradient(100deg, #ffffff 0%, #c9f9de 45%, #2fdb7f 80%, #16a38a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 6px 30px rgba(47, 219, 127, 0.25));
+}
+body .elementor-656 .elementor-element.elementor-element-c29ef30 .woocommerce-breadcrumb {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 6px 18px;
+  border: 1px solid rgba(47, 219, 127, 0.35);
+  border-radius: 999px;
+  background: rgba(0, 33, 29, 0.45);
+  backdrop-filter: blur(6px);
+  font-size: 14px;
+}
+body .elementor-656 .elementor-element.elementor-element-c29ef30 > .elementor-widget-container {
+  text-align: center;
+}
+
+/* ---------- Blog post (title banner is the shared page banner) ---------- */
+body .elementor-2133 .elementor-element.elementor-element-fc0fdcc {
+  padding: 64px 0 24px;
+}
+@media (min-width: 1025px) {
+  body .elementor-2133 .elementor-element.elementor-element-0d94ff5 > .elementor-element-populated {
+    padding-right: 40px;
+  }
+  body .elementor-2133 .elementor-element.elementor-element-10f0711 > .elementor-element-populated {
+    position: sticky;
+    top: 110px;
+  }
+}
+@media (max-width: 767px) {
+  body .elementor-2133 .elementor-element.elementor-element-fc0fdcc {
+    padding: 36px 6px 12px;
+  }
+}
+/* Date / author line above the featured image. */
+body .elementor-2133 .elementor-element.elementor-element-50c6cc0 {
+  margin-bottom: 26px;
+}
+body .elementor-2133 .elementor-element.elementor-element-50c6cc0 .elementor-icon-list-item {
+  padding: 6px 14px !important;
+  margin: 0 8px 8px 0 !important;
+  border: 1px solid rgba(3, 68, 49, 0.14);
+  border-radius: 999px;
+  background: #f3fdf8;
+}
+body .elementor-2133 .elementor-element.elementor-element-50c6cc0 .elementor-icon-list-item::after {
+  display: none !important;
+}
+body .elementor-2133 .elementor-element.elementor-element-50c6cc0 .elementor-icon-list-text {
+  color: #034431 !important;
+  font-size: 14px;
+  font-weight: 500;
+}
+body .elementor-2133 .elementor-element.elementor-element-50c6cc0 .elementor-icon-list-icon svg {
+  fill: #16a38a !important;
+  color: #16a38a !important;
+}
+body .elementor-2133 .elementor-element.elementor-element-9b866a1 {
+  margin-bottom: 36px;
+}
+/* Comfortable reading rhythm for the article text. */
+body .wp-post-body {
+  font-size: 17px;
+  line-height: 1.8;
+}
+body .wp-post-body > * + * {
+  margin-top: 1.1em;
+}
+body .wp-post-body :is(h2, h3, h4) {
+  margin-top: 2.2em;
+  margin-bottom: 0.2em;
+  line-height: 1.3;
+}
+body .wp-post-body :is(h2, h3, h4) + * {
+  margin-top: 0.6em;
+}
+body .wp-post-body :is(ul, ol) li + li {
+  margin-top: 0.4em;
+}
+body .wp-post-body figure,
+body .wp-post-body img {
+  margin-block: 1.6em;
+  border-radius: 14px;
+}
+body .elementor-2133 .elementor-element.elementor-element-9b866a1 img {
+  border-radius: 18px;
+  box-shadow: 0 30px 50px -30px rgba(0, 33, 29, 0.6);
+}
+body .elementor-2133 .elementor-element.elementor-element-db5acd1 > .elementor-widget-container {
+  overflow: hidden;
+  border-radius: 18px !important;
+  border-top: 4px solid #2fdb7f !important;
+  box-shadow: 0 20px 40px -28px rgba(0, 33, 29, 0.5);
+}
+body .elementor-2133 .elementor-element.elementor-element-e0796fc .elementor-author-box {
+  padding: 26px;
+  border-radius: 20px;
+  border-left: 4px solid #2fdb7f;
+  background: linear-gradient(90deg, #f3fdf8, #ffffff);
+  box-shadow: 0 0 0 1px rgba(3, 68, 49, 0.07);
+}
+
+/* ---------- Buttons: pill shape, original colours, no glow or hover colour ---------- */
+body :is(.elementor-location-single, [data-elementor-type="wp-page"], [data-elementor-type="wp-post"]) .elementor-button {
+  border-radius: 999px;
+}
+
+/* ---------- Cards (columns/widgets styled as cards in WordPress) ---------- */
+body .elementor-column.wp-card:not(.elementor-col-100) > .elementor-element-populated,
+body .elementor-widget.wp-card > .elementor-widget-container {
+  position: relative;
+  border-radius: 20px !important;
+  overflow-wrap: break-word;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+body .elementor-column.wp-card:not(.elementor-col-100) > .elementor-element-populated::before,
+body .elementor-widget.wp-card > .elementor-widget-container::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 1;
+  height: 4px;
+  border-radius: 20px 20px 0 0;
+  background: var(--brand-gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+body .elementor-column.wp-card:not(.elementor-col-100) > .elementor-element-populated:hover,
+body .elementor-widget.wp-card > .elementor-widget-container:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+}
+body .elementor-column.wp-card:not(.elementor-col-100) > .elementor-element-populated:hover::before,
+body .elementor-widget.wp-card > .elementor-widget-container:hover::before {
+  transform: scaleX(1);
+}
+/* Softer, green-tinted borders that read on both light and dark sections. */
+body .elementor-column.wp-card > .elementor-element-populated,
+body .elementor-widget.wp-card > .elementor-widget-container {
+  border-color: rgba(47, 219, 127, 0.28) !important;
+}
+body .elementor-column.wp-card:not(.elementor-col-100) > .elementor-element-populated:hover,
+body .elementor-widget.wp-card > .elementor-widget-container:hover {
+  border-color: rgba(47, 219, 127, 0.6) !important;
+}
+/* Text-only cards get comfortable inner spacing. */
+body .elementor-column.wp-card:not(.elementor-col-100):not(:has(.elementor-widget-image, .elementor-widget-icon-list, .elementor-widget-image-box)) > .elementor-element-populated {
+  padding: 22px 22px 14px !important;
+}
+/* Large single-column cards: deeper shadow + accent, no lift. */
+body .elementor-column.wp-card.elementor-col-100 > .elementor-element-populated {
+  border-radius: 24px !important;
+  /* Default inner spacing; cards with their own padding in WordPress keep it
+     (their per-element rule is more specific). */
+  padding: 36px 40px;
+}
+@media (max-width: 767px) {
+  body .elementor-column.wp-card.elementor-col-100 > .elementor-element-populated {
+    padding: 26px 22px;
+  }
+}
+
+/* ---------- Icon tiles ---------- */
+body .elementor-widget-icon-box.elementor-view-stacked .elementor-icon {
+  background-image: var(--brand-gradient);
+  border-radius: 16px;
+  box-shadow: 0 10px 22px -10px rgba(22, 163, 138, 0.8);
+  transition: transform 0.3s ease;
+}
+body .elementor-widget-icon-box:hover .elementor-icon {
+  transform: rotate(-6deg) scale(1.06);
+}
+
+/* ---------- Images in content ---------- */
+body [data-elementor-type="wp-page"] .elementor-widget-image img {
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+body [data-elementor-type="wp-page"] .elementor-widget-image:hover img {
+  transform: scale(1.015);
+  filter: drop-shadow(0 24px 34px rgba(0, 33, 29, 0.3));
+}
+
+/* ---------- Accordions / toggles ---------- */
+body :is(.elementor-accordion-item, .elementor-toggle-item) {
+  border-radius: 14px;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease;
+}
+body .elementor-toggle .elementor-toggle-item:not(:last-child),
+body .elementor-accordion .elementor-accordion-item:not(:last-child) {
+  margin-bottom: 10px;
+}
+body :is(.elementor-accordion-item, .elementor-toggle-item):hover {
+  box-shadow: 0 0 0 1px rgba(47, 219, 127, 0.55);
+}
+body :is(.elementor-accordion, .elementor-toggle) .elementor-tab-title {
+  border-left: 4px solid transparent !important;
+  transition: border-color 0.25s ease;
+}
+body :is(.elementor-accordion, .elementor-toggle) .elementor-tab-title.elementor-active {
+  border-left-color: #2fdb7f !important;
+}
+
+/* ---------- Image carousels ---------- */
+body .elementor-widget-image-carousel .elementor-image-carousel-wrapper {
+  padding: 16px 0;
+}
+body .elementor-widget-image-carousel .swiper-slide-image {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+body .elementor-widget-image-carousel .swiper-slide:hover .swiper-slide-image {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 24px 40px -16px rgba(47, 219, 127, 0.45);
+}
+body .elementor-widget-image-carousel .elementor-swiper-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(0, 33, 29, 0.75);
+  border: 1px solid rgba(47, 219, 127, 0.5);
+  color: #fff;
+  font-size: 16px !important;
+}
+
+/* ---------- Pricing: highlight the 3-month plan everywhere ---------- */
+body :is(.elementor-element-a132c34, .elementor-element-f2610c0, .elementor-element-7bcf2a9) > .elementor-element-populated {
+  position: relative;
+  overflow: visible !important;
+  border-color: #2fdb7f !important;
+  background: linear-gradient(180deg, rgba(47, 219, 127, 0.16), rgba(47, 219, 127, 0.04)) !important;
+  box-shadow: 0 0 0 1px #2fdb7f, 0 25px 60px -25px rgba(47, 219, 127, 0.6);
+}
+body :is(.elementor-element-a132c34, .elementor-element-f2610c0, .elementor-element-7bcf2a9) > .elementor-element-populated::after {
+  content: "Populärast";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  padding: 5px 16px;
+  border-radius: 999px;
+  background: var(--brand-gradient);
+  color: #00211d;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px -6px rgba(47, 219, 127, 0.7);
+}
+
+/* ---------- Blog cards ---------- */
+body .elementor-posts .elementor-post__card {
+  border-radius: 20px !important;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+body .elementor-posts .elementor-post__card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover) !important;
+}
+body .elementor-posts .elementor-post__thumbnail img {
+  transition: transform 0.5s ease !important;
+}
+body .elementor-posts .elementor-post__card:hover .elementor-post__thumbnail img {
+  transform: scale(1.06) !important;
+}
+body .elementor-posts .elementor-post__title a {
+  transition: color 0.2s ease;
+}
+body .elementor-posts .elementor-post__card:hover .elementor-post__title a {
+  color: #16a38a !important;
+}
+
+/* ---------- Contact form ---------- */
+body .elementor-widget-form .elementor-field-textual {
+  border-radius: 12px !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+body .elementor-widget-form .elementor-field-textual:focus {
+  border-color: #2fdb7f !important;
+  box-shadow: 0 0 0 3px rgba(47, 219, 127, 0.25);
+  outline: none;
+}
+
+/* ---------- Footer ---------- */
+body .elementor-location-footer > .elementor-section:first-child {
+  position: relative;
+}
+body .elementor-location-footer > .elementor-section:first-child::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #2fdb7f 30%, #16a38a 70%, transparent);
+  box-shadow: 0 0 24px 2px rgba(47, 219, 127, 0.45);
+}
+body .elementor-location-footer .elementor-icon-list-item a {
+  transition: color 0.2s ease, padding 0.2s ease;
+}
+body .elementor-location-footer .elementor-icon-list-item a:hover {
+  color: #2fdb7f !important;
+}
+
+/* ---------- Installation guides (Tailwind components) ---------- */
+.install-guides .rounded-2xl,
+.install-guides .rounded-xl {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.install-guides a.rounded-2xl:hover,
+.install-guides a.rounded-xl:hover,
+.install-guides .group:hover > .rounded-2xl {
+  transform: translateY(-4px);
+  border-color: rgba(47, 219, 127, 0.5);
+  box-shadow: 0 20px 40px -24px rgba(47, 219, 127, 0.45);
+}
+.install-guides a:is(.bg-button, .bg-brand) {
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body * {
+    transition: none !important;
+  }
+}

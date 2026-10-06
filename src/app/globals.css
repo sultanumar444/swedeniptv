@@ -1,0 +1,30 @@
+@import "tailwindcss";
+/* Hello Elementor element resets, in the base layer after Tailwind's preflight. */
+@import "../styles/elementor/base.css";
+
+@theme inline {
+  --font-sans: var(--font-sora);
+}
+
+/* Brand colours from the WordPress site's Elementor kit. */
+@theme {
+  --color-brand: #2fdb7f;
+  --color-brand-dark: #16a38a;
+  --color-ink: #00211d;
+  --color-ink-light: #034431;
+  --color-ink-deep: #001714;
+  --color-button: #2fdb77;
+}
+
+body {
+  font-family: var(--font-sora), Arial, Helvetica, sans-serif;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

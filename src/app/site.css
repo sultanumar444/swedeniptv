@@ -1,0 +1,67 @@
+/*
+ * Glue between the migrated Elementor styles and the Next.js app:
+ * things Elementor's JavaScript or WordPress used to provide.
+ */
+
+/* Some WordPress layouts have absolutely positioned widgets wider than the
+   page (also on the live site); never let them cause sideways scrolling.
+   `clip` (unlike `hidden`) keeps the sticky header working. */
+html,
+body {
+  overflow-x: clip;
+}
+
+/* Header section was "sticky: top" in Elementor. */
+.site-header-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+/* Inline Font Awesome icons (Elementor's "inline font icons" mode). */
+.e-font-icon-svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Tailwind's preflight removes these; WordPress content relies on them. */
+.elementor ul:not([class]),
+.elementor ol:not([class]) {
+  padding-inline-start: 2em;
+  margin-block-end: 0.9rem;
+}
+.elementor ul:not([class]) {
+  list-style: disc;
+}
+.elementor ol:not([class]) {
+  list-style: decimal;
+}
+.elementor img {
+  display: inline-block;
+}
+
+/* Gutenberg blog post body: anchors for the table of contents. */
+.wp-post-body :is(h2, h3, h4, h5, h6) {
+  scroll-margin-top: 110px;
+}
+
+/* Instruction guides: don't let the WordPress theme's link colour leak in. */
+@layer base {
+  .install-guides a {
+    color: inherit;
+  }
+}
+
+/* Blog cards: every thumbnail fills the same fixed-ratio frame
+   (ratio comes from the widget's own Elementor settings). */
+.elementor-posts-container.elementor-has-item-ratio .elementor-post__thumbnail img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: none;
+}
